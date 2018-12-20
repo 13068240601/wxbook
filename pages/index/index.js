@@ -7,7 +7,10 @@ Page({
     motto: 'Hello World',
     userInfo: {},
     hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+    canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    TypeList:null,
+    hidden_loading:false,
+    sraech_val:null,//搜索的值
   },
   //事件处理函数
   bindViewTap: function() {
@@ -15,12 +18,43 @@ Page({
       url: '../logs/logs'
     })
   },
-  clickMe:function(){
+  getVal:function(e){
     this.setData({
-      motto:"1234567446123"
+      sraech_val:e.detail.value
+    })
+  },
+  search:function(){
+    wx.navigateTo({
+      url: '../typeList/typeList?sraech_val=' + this.data.sraech_val
+    })
+  },
+  jumpTypeList:function(e){
+    var type = e.currentTarget.dataset.type;
+    var typeName = e.currentTarget.dataset.typename;
+    wx.navigateTo({
+      url: '../typeList/typeList?type=' + type + "&typeName=" + typeName
     })
   },
   onLoad: function () {
+    var that = this
+    wx:wx.request({
+      url: 'https://api.zhangcc.top/xiaoshuo/cats/lv2/statistics',
+      data: '',
+      header: {},
+      method: 'GET',
+      dataType: 'json',
+      responseType: 'text',
+      success: function(res) {
+        var list1 = res.data
+        // console.log(list1)
+        that.setData({
+          TypeList: list1,
+          hidden_loading:true,
+        });
+      },
+      fail: function(res) {},
+      complete: function(res) {},
+    })
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,

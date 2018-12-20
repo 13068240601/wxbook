@@ -1,0 +1,30 @@
+<view class="chapter_section" catchtap='showNav'>
+  <scroll-view class='chapter_chapter' scroll-top='{{scroll_top}}' enable-back-to-top="true" scroll-y="true" bindscrolltolower='next_chapter'>
+    <view class='chapter_box'>
+      <view class='chapter_item' style='font-size:{{fontSize}}px' wx:key='{{index}}' wx:for='{{paragraph}}'>
+        <view class='chapter_title'>{{chaptersTitle[index]}}</view>
+        <view class='chapter_text' wx:for='{{paragraph[index]}}' wx:key='{{index}}'>{{item}}</view>
+      </view>
+    </view>
+  </scroll-view>
+</view>
+<!-- 底部菜单 -->
+<view class='nav' wx:if='{{isShowNav}}'>
+  <view class='narrow' catchtap='narrow'>A-</view>
+  <view class='catalog' catchtap='showcatchtap'>目录</view>
+  <view class='enlarge' catchtap='enlarge'>A+</view>
+  <view class='home' catchtap='gohome'>
+    <image src='../../img/home.png'></image>
+  </view>
+</view>
+<!-- 左侧章节 -->
+<view class='chapters_main' wx:if='{{isShowchapters}}' catchtap='hiddcatchtap'>
+  <view class='chapters_section'>
+    <view class='chapters_item' wx:for='{{chapters}}' catchtap='jumpContent' data-i='{{index}}' wx:key='{{index}}'>
+      {{item.title}}
+    </view>
+  </view>
+</view>
+<loading hidden="{{hidden_loading}}">
+  {{loading}}
+</loading>

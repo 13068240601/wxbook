@@ -1,12 +1,15 @@
 {
   "pages":[
     "pages/index/index",
-    "pages/logs/logs"
+    "pages/bookInfo/bookInfo",
+    "pages/typeList/typeList",
+    "pages/catalog/catalog",
+    "pages/bookContent/bookContent"
   ],
   "window":{
     "backgroundTextStyle":"light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "helloWorld",
+    "navigationBarTitleText": "小说神器",
     "navigationBarTextStyle":"black"
   }
 }

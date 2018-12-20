@@ -1,0 +1,31 @@
+<view class="section">
+  <scroll-view class='books_scroll' scroll-y="true" bindscrolltolower='lower'>
+    <view class='typeList_container'>
+      <view class='typeList_item' wx:for='{{typeBookList}}' wx:key='{{index}}' data-content_type='{{item.contentType}}' data-book_id='{{item._id}}' bindtap='jumpInfo' id='{{index}}'>
+        <view class='book_cover_box'>
+          <image src='http://statics.zhuishushenqi.com{{item.cover}}' class='book_cover'></image>
+        </view>
+        <view class='right'>
+          <text class='book_title'>{{item.title}}</text>
+          <view class='author_majorCate'>
+            <text class='book_author'>{{item.author}}</text>
+            |
+            <text class='book_majorCate' wx:if='{{item.majorCate}}'>{{item.majorCate}}</text>
+            <text class='book_majorCate' wx:else='{{item.cat}}'>{{item.cat}}</text>
+          </view>
+          <text class='book_shortIntro'>{{item.shortIntro}}</text>
+          <view class='latelyFollower_retentionRatio'>
+            <text class='book_latelyFollower'>
+              <text class='number'>{{item.latelyFollower}}</text>人气
+            </text>
+            |
+            <text class='book_retentionRatio'><text class='number'>{{item.retentionRatio}}%</text>读者留存</text>
+          </view>
+        </view>
+      </view>    
+    </view>
+    <loading hidden="{{hidden_loading}}">
+      {{loading}}
+    </loading>
+  </scroll-view>
+</view>

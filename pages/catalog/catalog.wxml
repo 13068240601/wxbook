@@ -1,0 +1,17 @@
+<view class='chapters_box'>
+  <view class='chapters_header'>
+    <view >
+      <text class='chapters_title'>目录</text>
+      <text class='chapters_length'>共{{chapters.length}}章</text>
+    </view>
+    <text wx:if='{{Upside_down==true}}' class='chapterBtn' bindtap='Upside_down'>正序</text>    
+    <text wx:if='{{Upside_down==false}}' class='chapterBtn' bindtap='Upside_down'>倒序</text>
+  </view>
+  <view class='chapters_item' bindtap='jumpContent' wx:for='{{chapters}}' data-i='{{index}}' data-link='{{item.link}}' wx:key='{{index}}'>
+    <view class='chapters_item_title'>{{item.title}}</view>
+    <image src='../../img/vip.png' wx:if='{{item.unreadble}}'></image>
+  </view>
+</view>
+<loading hidden="{{hidden_loading}}">
+  章节加载中...
+</loading>

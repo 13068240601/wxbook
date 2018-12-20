@@ -1,0 +1,90 @@
+<view class='info_container'>
+  <view class='top'>
+    <view class='left' bindtap='jumpContent' data-book_id='{{bookInfo._id}}'>
+      <image src='http://statics.zhuishushenqi.com{{bookInfo.cover}}'></image>      
+    </view>
+    <view class='right'>
+      <text class='book_title' bindtap='jumpContent' data-book_id='{{bookInfo._id}}'>{{bookInfo.title}}</text>
+      <view class='author_type'>
+        <text class='author' data-author='{{bookInfo.author}}' bindtap='jumpTypeList'>{{bookInfo.author}}</text>
+        |
+        <text class='type'>{{bookInfo.majorCate}}</text>
+        |
+        <text class='wordCount'>{{bookInfo.wordCount}}字</text>
+      </view>
+      <text class='updated'>最后更新时间:{{updated}}</text>
+    </view>
+  </view>
+  <view class='book_data'>
+    <view class='latelyFollower'>
+      <text class='book_data_title'>追人气</text>
+      <text>{{bookInfo.latelyFollower}}</text>
+    </view>
+    <view class='retentionRatio'>
+      <text class='book_data_title'>读者留存率</text>
+      <text>{{bookInfo.retentionRatio}}%</text>
+    </view>
+    <view class='postCount'>
+      <text class='book_data_title'>日更字数/天</text>
+      <text>{{bookInfo.postCount}}</text>
+    </view>
+  </view>
+  <view class='book_info_box'>
+    <view class='book_info_text {{showInfo ? "book_info_text_hidd": ""}}'>{{bookInfo.longIntro}}</view>
+    <image class='showInfo' src='{{showInfo?"../../img/arrow.png":"../../img/up.png"}}' bindtap='show'></image>
+  </view>
+  <view class='catalog' data-book_id='{{bookInfo._id}}' bindtap='jumpCatalog'>
+    <text class='catalog_title'>目录</text>
+    <text class='catalog_text'>{{bookInfo.lastChapter}}</text>
+  </view>
+  <view class='evaluate'>
+    <view class='evaluate_title'>
+      <text class='evaluate_text'>热门书评</text>
+      <text class='move_evaluate'>更多评论</text>
+    </view>
+    <view class='evaluate_item' wx:for='{{posts}}' wx:key='{{index}}'>
+      <view class='left'>
+        <image wx:if='{{item.author.activityAvatar}}' src='http://statics.zhuishushenqi.com{{item.author.activityAvatar}}'></image>
+        <image wx:else src='http://statics.zhuishushenqi.com{{bookInfo.cover}}'></image>
+      </view>
+      <view class='right'>
+        <text class='nickname'>{{item.author.nickname}}</text>
+        <text class='title'>{{item.title}}</text>
+        <text class='content'>{{item.content}}</text>
+        <view class='bottom'>
+          <text class='updated'>{{postsTime[index]}}</text>
+          <text class='likeCount'>{{item.likeCount}}人觉得有用</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class='recommend'>
+    <view class='recommend_title'>书籍推荐</view>
+    <view class='recommend_container'>
+      <view class='recommend_item' wx:for='{{recommend}}' wx:key='{{index}}' data-content_type='{{bookInfo.contentType}}' data-book_id='{{item._id}}' bindtap='jumpInfo' id='{{index}}'>
+        <view class='book_cover_box'>
+          <image src='http://statics.zhuishushenqi.com{{item.cover}}' class='book_cover'></image>
+        </view>
+        <view class='right'>
+          <text class='book_title'>{{item.title}}</text>
+          <view class='author_majorCate'>
+            <text class='book_author'>{{item.author}}</text>
+            |
+            <text class='book_majorCate'>{{item.majorCate}}</text>
+          </view>
+          <text class='book_shortIntro'>{{item.shortIntro}}</text>
+          <view class='latelyFollower_retentionRatio'>
+            <text class='book_latelyFollower'>
+              <text class='number'>{{item.latelyFollower}}</text>人气
+            </text>
+            |
+            <text class='book_retentionRatio'><text class='number'>{{item.retentionRatio}}%</text>读者留存</text>
+          </view>
+        </view>
+      </view>    
+    </view>
+  </view>
+</view>
+<loading hidden="{{hidden_loading}}">
+  数据加载中...
+</loading>

@@ -6,7 +6,7 @@
         <image ex:else src='http://statics.zhuishushenqi.com{{cover}}'></image>
       </view>
       <view class='right'>
-        <text class='nickname'>{{item.author.nickname}}</text>
+        <text class='nickname'>{{item.author.nickname}}{{index}}</text>
         <text class='title'>{{item.title}}</text>
         <text class='content'>{{item.content}}</text>
         <view class='bottom'>

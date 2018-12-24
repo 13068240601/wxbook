@@ -24,7 +24,7 @@ Page({
   //更多评论
   move_comment:function(){
     wx.navigateTo({
-      url: '../comment/comment?book=' + this.data.book_id + '&cover=' + this.data.bookInfo.cover
+      url: '../comment/comment?book=' + this.data.book_id + '&cover=' + this.data.bookInfo.cover + '&name=' +this.data.bookInfo.title
     })
   },
   //书籍简介是否展开

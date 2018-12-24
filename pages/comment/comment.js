@@ -15,6 +15,7 @@ Page({
     id:'',
     total:null,
     getdata:true,
+    name:'',//书名
   },
 
   /**
@@ -29,7 +30,11 @@ Page({
       var num = that.data.start
       if (num < that.data.total){
         num++
-        that.getComment()
+        that.setData({
+          start:num
+        },function(){
+          that.getComment()
+        })
       }else{
         wx.showToast({
           title: '到底了...',
@@ -57,6 +62,9 @@ Page({
         dataType: 'json',
         responseType: 'text',
         success: function (res) {
+          for (let i = 0; i < res.data.reviews.length;i++){
+            console.log(res.data.reviews[i].title)
+          }
           var time = that.data.postsTime
           var reviews = that.data.posts
           var totalPage = Math.ceil(res.data.total/that.data.limit)
@@ -99,8 +107,12 @@ Page({
     var that = this
     that.setData({
       id:options.book,
-      cover: options.cover
+      cover: options.cover,
+      name: options.name
     },function(){
+      wx.setNavigationBarTitle({
+        title: that.data.name
+      })
       that.getComment()
     })
     

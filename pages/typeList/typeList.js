@@ -15,7 +15,19 @@ Page({
     loading:"数据加载中...",
     gender: null,
     major: null,
+    minor: '',
+    type: "hot",
     author:null,//作者
+    mins:null,//小分类列表
+    active:[true],
+    typeAvtive:[true],
+    typeList:[
+      { zh: '热门', en: 'hot' },
+      { zh: '新书', en: 'new' },
+      { zh: '好评', en: 'reputation' },
+      { zh: '完结', en: 'over' },
+      { zh: '包月', en: 'monthly' }
+    ]
   },
   //事件处理函数
   bindViewTap: function() {
@@ -43,6 +55,49 @@ Page({
       url: '../bookInfo/bookInfo?book_id=' + book_id + '&contentType=' + contentType
     })
   },
+  //切换分类
+  changType:function(e){
+    var i = e.currentTarget.dataset.i
+    var type = e.currentTarget.dataset.type
+    var that = this
+    if(that.data.typeAvtive[i]!=true){
+      var typeAvtive = []
+      typeAvtive[i] = true
+      that.setData({
+        typeAvtive: typeAvtive,
+        type: type,
+        typeBookList: []
+      }, function () {
+        that.getList()
+      })
+    }
+  },
+  //切换小分类
+  changMins:function(e){
+    var that = this
+    var i = e.currentTarget.dataset.i
+    if(that.data.active[i]!=true){
+      var act = []
+      act[i] = true
+      that.setData({
+        active: act,
+        typeBookList:[]
+      })
+      if(i>0){
+        that.setData({
+          minor: that.data.mins[i-1]
+        },function(){
+          that.getList()
+        })
+      }else{
+        that.setData({
+          minor: ''
+        },function(){
+          that.getList()
+        })
+      }
+    }
+  },
   getList(){
     var that = this
     that.setData({
@@ -53,10 +108,10 @@ Page({
       data: {
         // gender: options.type,
         gender: that.data.gender,
-        type: "hot",
+        type: that.data.type,
         // major: options.typeName,
         major: that.data.major,
-        minor: "",
+        minor: that.data.minor,
         start: that.data.start,
         limit: that.data.limit,
       },
@@ -177,6 +232,16 @@ Page({
       })
     }else{
       // console.log(options.type, options.typeName)
+      // console.log(JSON.parse(options.mins))
+      // console.log(options.mins)
+      var mins = JSON.parse(options.mins)
+      if (mins.major == options.typeName){
+        this.setData({
+          mins: mins.mins
+        },function(){
+          // console.log(that.data.mins)
+        })
+      }
       wx.setNavigationBarTitle({
         title: options.typeName,
       })

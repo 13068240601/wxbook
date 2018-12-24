@@ -12,28 +12,28 @@
   <view class='typeContainer'>
     <view class='typeMale'>
       <text class='typeTitle'>男生</text>
-      <view wx:for="{{TypeList.male}}" data-type='male' wx:key='{{index}}' data-typeName='{{item.name}}' bindtap='jumpTypeList' class='typeItem'>
+      <view wx:for="{{TypeList.male}}" data-type='male' wx:key='{{index}}' data-i='{{index}}' data-typeName='{{item.name}}' bindtap='jumpTypeList' class='typeItem'>
         <text class='typeName'>{{item.name}}</text>
         <text class='typeBookCount'>{{item.bookCount}}</text>
       </view>  
     </view>
     <view class='typeFemale'>
       <text class='typeTitle'>女生</text>
-      <view wx:for="{{TypeList.female}}" data-type='female' wx:key='{{index}}' data-typeName='{{item.name}}' bindtap='jumpTypeList' class='typeItem'>
+      <view wx:for="{{TypeList.female}}" data-type='female' data-i='{{index}}' wx:key='{{index}}' data-typeName='{{item.name}}' bindtap='jumpTypeList' class='typeItem'>
         <text class='typeName'>{{item.name}}</text>
         <text class='typeBookCount'>{{item.bookCount}}</text>
       </view>
     </view>
     <view class='typePicture'>
       <text class='typeTitle'>漫画</text>
-      <view wx:for="{{TypeList.picture}}" data-type='picture' wx:key='{{index}}' data-typeName='{{item.name}}' bindtap='jumpTypeList' class='typeItem'>
+      <view wx:for="{{TypeList.picture}}" data-i='{{index}}' data-type='picture' wx:key='{{index}}' data-typeName='{{item.name}}' bindtap='jumpTypeList' class='typeItem'>
         <text class='typeName'>{{item.name}}</text>
         <text class='typeBookCount'>{{item.bookCount}}</text>
       </view>
     </view>
     <view class='typePress'>
       <text class='typeTitle'>出版</text>
-      <view wx:for="{{TypeList.press}}" data-type='press' wx:key='{{index}}' data-typeName='{{item.name}}' bindtap='jumpTypeList' class='typeItem'>
+      <view wx:for="{{TypeList.press}}" data-type='press' data-i='{{index}}' wx:key='{{index}}' data-typeName='{{item.name}}' bindtap='jumpTypeList' class='typeItem'>
         <text class='typeName'>{{item.name}}</text>
         <text class='typeBookCount'>{{item.bookCount}}</text>
       </view>

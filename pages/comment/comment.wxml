@@ -1,0 +1,23 @@
+<view>
+  <scroll-view class='comment' scroll-y="true" bindscrolltolower='next'>
+    <view class='evaluate_item' wx:for='{{posts}}' wx:key='{{index}}'>
+      <view class='left'>
+        <image wx:if='{{item.author.activityAvatar}}' src='http://statics.zhuishushenqi.com{{item.author.activityAvatar}}'></image>
+        <image ex:else src='http://statics.zhuishushenqi.com{{cover}}'></image>
+      </view>
+      <view class='right'>
+        <text class='nickname'>{{item.author.nickname}}</text>
+        <text class='title'>{{item.title}}</text>
+        <text class='content'>{{item.content}}</text>
+        <view class='bottom'>
+          <text class='updated'>{{postsTime[index]}}</text>
+          <text class='likeCount'>{{item.likeCount}}人觉得有用</text>
+        </view>
+      </view>
+    </view>
+    <loading hidden="{{hidden_loading}}">
+      数据加载中...
+    </loading>
+  </scroll-view>
+</view>
+

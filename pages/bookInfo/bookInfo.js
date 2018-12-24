@@ -21,6 +21,12 @@ Page({
       url: '../bookContent/bookContent?book=' + this.data.book_id + '&bookname=' + this.data.bookInfo.title + '&contentType=' + this.data.contentType + '&catalog=true'
     })
   },
+  //更多评论
+  move_comment:function(){
+    wx.navigateTo({
+      url: '../comment/comment?book=' + this.data.book_id + '&cover=' + this.data.bookInfo.cover
+    })
+  },
   //书籍简介是否展开
   show(){
     var show = this.data.showInfo;
@@ -101,15 +107,18 @@ Page({
       responseType: 'text',
       success: function (res) {
         // console.log(res.data)
-        var time = []
-        var d = new Date()
-        for (var i = 0; i < res.data.posts.length;i++){
-          time[i] = d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate() + ' ' + d.getHours() + ':' + d.getMinutes() + ':' + d.getSeconds();
+        if ((res.data.ok == true || res.data.ok == 'true') && res.data.posts){
+          var time = []
+          
+          for (var i = 0; i < res.data.posts.length; i++) {
+            var d = new Date(res.data.posts[i].updated)
+            time[i] = d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate() + ' ' + d.getHours() + ':' + d.getMinutes() + ':' + d.getSeconds();
+          }
+          that.setData({
+            posts: res.data.posts,
+            postsTime: time
+          })
         }
-        that.setData({
-          posts: res.data.posts,
-          postsTime:time
-        })
       },
       fail: function (res) { },
       complete: function (res) { },

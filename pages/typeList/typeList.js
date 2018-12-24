@@ -23,6 +23,17 @@ Page({
       url: '../logs/logs'
     })
   },
+  network_error:function(){
+    this.setData({
+      hidden_loading: true,
+    }, function () {
+      wx.showToast({
+        title: '网络错误',
+        icon: 'none',
+        duration: 1500
+      })
+    })
+  },
   //页面跳转
   jumpInfo:function(e){
     var book_id = e.currentTarget.dataset.book_id;
@@ -66,7 +77,9 @@ Page({
           typeBookList: list1
         });
       },
-      fail: function (res) { },
+      fail: function (res) { 
+        that.network_error()
+      },
       complete: function (res) { },
     })
   },
@@ -99,7 +112,9 @@ Page({
         });
         // console.log(res.data)
       },
-      fail: function(res) {},
+      fail: function(res) {
+        this.network_error()
+      },
       complete: function(res) {},
     })
   },
@@ -119,20 +134,24 @@ Page({
       dataType: 'json',
       responseType: 'text',
       success: function(res) {
-        // console.log(res.data)
-        var list1 = that.data.typeBookList;
-        for (var i = 0; i < res.data.books.length; i++) {
-          list1.push(res.data.books[i])
+        // console.log(res)
+        if (res.statusCode==200){
+          var list1 = that.data.typeBookList;
+          for (var i = 0; i < res.data.books.length; i++) {
+            list1.push(res.data.books[i])
+          }
+          // console.log(list1)
+          that.setData({
+            typeBookList: list1
+          });
+          that.setData({
+            hidden_loading: true,
+          })
         }
-        // console.log(list1)
-        that.setData({
-          typeBookList: list1
-        });
-        that.setData({
-          hidden_loading: true,
-        })
       },
-      fail: function(res) {},
+      fail: function(res) {
+        this.network_error()
+      },
       complete: function(res) {},
     })
   },

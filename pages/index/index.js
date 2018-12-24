@@ -11,6 +11,7 @@ Page({
     TypeList:null,
     hidden_loading:false,
     sraech_val:null,//搜索的值
+    recommend:[],  //推荐内容
   },
   //事件处理函数
   bindViewTap: function() {
@@ -19,15 +20,45 @@ Page({
     })
   },
   getVal:function(e){
+    var that = this
     this.setData({
       sraech_val:e.detail.value
+    },function(){
+      wx.request({
+        url: 'https://api.zhangcc.top/xiaoshuo/book/auto-complete?query=' + that.data.sraech_val,
+        method: 'GET',
+        dataType: 'json',
+        responseType: 'text',
+        success: function (res) {
+          // console.log(res)
+          that.setData({
+            recommend: res.data.keywords
+          })
+        },
+        fail: function (res) {
+          
+        },
+        complete: function (res) { },
+      })
     })
   },
+  //跳转搜索结果页
   search:function(){
     wx.navigateTo({
       url: '../typeList/typeList?sraech_val=' + this.data.sraech_val
     })
   },
+  //点击推荐列表跳转搜索结果页
+  recommend(e){
+    var recommend = e.currentTarget.dataset.recommend;
+    var that = this
+    that.setData({
+      sraech_val: recommend
+    },function(){
+      that.search()
+    })
+  },
+  //点击分类跳转结果页
   jumpTypeList:function(e){
     var type = e.currentTarget.dataset.type;
     var typeName = e.currentTarget.dataset.typename;
@@ -52,7 +83,17 @@ Page({
           hidden_loading:true,
         });
       },
-      fail: function(res) {},
+      fail: function(res) {
+        that.setData({
+          hidden_loading: true,
+        },function(){
+          wx.showToast({
+            title: '网络错误',
+            icon: 'none',
+            duration: 1500
+          })
+        });
+      },
       complete: function(res) {},
     })
     if (app.globalData.userInfo) {

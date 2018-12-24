@@ -1,8 +1,13 @@
 <!--typeListt.wxml-->
 <view class="container">
-  <view class='search_container'>
-    <input class='search_input' bindinput='getVal' type='search' placeholder-style='color:#333333' placeholder='请输入搜索内容'></input>
-    <button class='search_btn' bindtap='search'>搜索</button>
+  <view class='top'>
+    <view class='search_container'>
+      <input class='search_input' bindinput='getVal' type='search' placeholder-style='color:#333333' placeholder='请输入搜索内容'></input>
+      <button class='search_btn' bindtap='search'>搜索</button>
+    </view>
+    <view class='recommend'>
+      <text class='rec_item' bindtap='recommend' wx:for='{{recommend}}' wx:key='{{index}}' data-recommend='{{item}}'>{{item}}</text>
+    </view>
   </view>
   <view class='typeContainer'>
     <view class='typeMale'>

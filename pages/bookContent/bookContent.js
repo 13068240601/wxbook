@@ -17,7 +17,8 @@ Page({
     isShowchapters:false,     //章节是否显示
     isShowNav:false,          //底部菜单是否显示
     fontSize:16,              //默认字体大小
-    loading:'数据加载中...'
+    loading:'数据加载中...',
+    asce:true,                //章节升序
 
   },
   //隐藏章节
@@ -221,23 +222,57 @@ Page({
       complete: function (res) { },
     })
   },
+  next:function(i){
+    var Title = this.data.chaptersTitle;
+    Title.push(this.data.chapters[i].title)
+    this.getchapters(this.data.chapters[i].link)
+    this.setData({
+      chaptersNumber: i,
+      chaptersTitle: Title
+    }, function () {
+      // console.log(that.data.chaptersTitle)
+    })
+  },
   //下一章
   next_chapter(){
     // console.log("到底了")
     var that = this
-    if(this.data.isRequest==true){
-      var i = this.data.chaptersNumber;
-      i++;
-      var Title = this.data.chaptersTitle;
-      Title.push(this.data.chapters[i].title)
-      this.getchapters(this.data.chapters[i].link)
+    var i = this.data.chaptersNumber;
+    // console.log(i,that.data.chapters.length-1)
+    if (this.data.isRequest == true ){
+      if (that.data.asce == true && (i < that.data.chapters.length - 1)){
+        i++
+        that.next(i)
+      } else if (that.data.asce == false && (i > 0)){
+        i--
+        that.next(i)
+      } else {
+        wx.showToast({
+          title: '没有更多了...',
+          icon: 'none',
+          duration: 1000
+        })
+      }
+    }
+  },
+  //章节升降序
+  change:function(){
+    var that = this;
+    var list2 = this.data.chapters;
+    var asce = this.data.asce
+    list2.reverse()
+    if(asce==true){
       this.setData({
-        chaptersNumber: i,
-        chaptersTitle:Title
-      },function(){
-        console.log(that.data.chaptersTitle)
+        asce:false
+      })
+    }else{
+      this.setData({
+        asce:true
       })
     }
+    this.setData({
+      chapters: list2
+    })
   },
   onLoad: function (options) {
     // console.log(options)

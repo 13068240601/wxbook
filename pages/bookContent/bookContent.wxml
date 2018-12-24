@@ -19,6 +19,7 @@
 </view>
 <!-- 左侧章节 -->
 <view class='chapters_main' wx:if='{{isShowchapters}}' catchtap='hiddcatchtap'>
+  <image class='chapters_change' catchtap='change' src='../../img/change.png'></image>
   <view class='chapters_section'>
     <view class='chapters_item' wx:for='{{chapters}}' catchtap='jumpContent' data-i='{{index}}' wx:key='{{index}}'>
       {{item.title}}

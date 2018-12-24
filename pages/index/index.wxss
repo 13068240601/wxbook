@@ -24,9 +24,15 @@
   justify-content: space-between;
   align-items: center;
 }
-.search_container{
+.top{
   width: 95%;
+  margin: 0 auto;
+  position: relative;
+}
+.search_container{
+  width: 100%;
   text-align: center;
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -58,6 +64,29 @@
   border-radius: 0; 
   background-color: #ffffff;
   font-size: 16px;
+}
+.recommend{
+  position: absolute;
+  width: 100%;
+  height: auto;
+  top:40px;
+  left: 0;
+  background-color: #ffffff;
+  border-radius: 5px;
+  box-shadow: 0 0 5px #aaaaaa;
+  overflow: hidden;
+  z-index: 999;
+}
+.rec_item{
+  padding: 5px 10px;
+  box-sizing: border-box;
+  float: left;
+  /* background: #efeff4; */
+  color: #333;
+  border-radius: 20px;
+  margin: 5px;
+  box-shadow:0 0 2px #bbbbbb;
+
 }
 .search_btn::after {
   border: 0;

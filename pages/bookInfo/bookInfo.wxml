@@ -40,7 +40,7 @@
   <view class='evaluate'>
     <view class='evaluate_title'>
       <text class='evaluate_text'>热门书评</text>
-      <text class='move_evaluate'>更多评论</text>
+      <text class='move_evaluate' bindtap='move_comment'>更多评论</text>
     </view>
     <view class='evaluate_item' wx:for='{{posts}}' wx:key='{{index}}'>
       <view class='left'>

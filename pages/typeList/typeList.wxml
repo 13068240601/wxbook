@@ -1,9 +1,9 @@
 <view class="section">
   <scroll-view class='books_scroll' scroll-y="true" bindscrolltolower='lower'>
-    <view class='all_container'>
+    <view class='all_container' wx:if='{{major!=null}}'>
       <text class='type {{typeAvtive[index]==true?"avtive":""}}' data-i='{{index}}' data-type='{{item.en}}' bindtap='changType' wx:for='{{typeList}}' wx:key='{{index}}'>{{item.zh}}</text>
     </view>
-    <view class='all_container' wx:if='{{mins.length!=0}}'>
+    <view class='all_container' wx:if='{{major!=null&&mins.length!=0}}'>
       <text class='type {{active[0]==true?"avtive":""}}' data-i='0' bindtap='changMins'>全部</text>
       <text class='type {{active[index+1]==true?"avtive":""}}' data-i='{{index+1}}' bindtap='changMins' wx:for='{{mins}}' wx:key='{{index}}'>{{item}}</text>
     </view>

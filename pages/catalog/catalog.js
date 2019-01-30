@@ -33,7 +33,7 @@ Page({
   getcatalog(id){
     var that = this;
     wx: wx.request({
-      url: 'https://api.zhangcc.top/xiaoshuo/mix-atoc/chapter?id='+that.data.book_id,
+      url: app.globalData.url+'xiaoshuo/mix-atoc/chapter?id='+that.data.book_id,
       // data: {
       //   id:id
       // },
@@ -66,7 +66,7 @@ Page({
       hidden_loading: false,
     })
     wx: wx.request({
-      url: 'https://api.zhangcc.top/xiaoshuo/btoc',
+      url: app.globalData.url+'xiaoshuo/btoc',
       data: {
         view:"summary",
         book: that.data.book_id

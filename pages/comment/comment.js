@@ -51,7 +51,7 @@ Page({
       hidden_loading: false,      
     },function(){
       wx: wx.request({
-        url: 'https://api.zhangcc.top/xiaoshuo/post/review/by-book',
+        url: app.globalData.url+'xiaoshuo/post/review/by-book',
         data: {
           book: that.data.id,
           sort: that.data.sort,

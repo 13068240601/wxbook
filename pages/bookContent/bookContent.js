@@ -75,7 +75,7 @@ Page({
     var that = this;
     return new Promise((resolve, reject) => {
       wx: wx.request({
-        url: 'https://api.zhangcc.top/xiaoshuo/mix-atoc/chapter?id=' + id,
+        url: app.globalData.url+'xiaoshuo/mix-atoc/chapter?id=' + id,
         header: {},
         method: 'GET',
         dataType: 'json',
@@ -133,7 +133,7 @@ Page({
     })
     return new Promise((resolve, reject)=>{
       wx: wx.request({
-        url: 'https://api.zhangcc.top/xiaoshuo/btoc',
+        url: app.globalData.url+'xiaoshuo/btoc',
         data: {
           view: "summary",
           book: that.data.book_id
@@ -161,7 +161,7 @@ Page({
       isRequest:false,
     }) 
     wx: wx.request({
-      url: 'https://api.zhangcc.top/xiaoshuo/chapter/details?link=' + encodeURIComponent(link),
+      url: app.globalData.url+'xiaoshuo/chapter/details?link=' + encodeURIComponent(link),
       data: '',
       header: {},
       method: 'GET',

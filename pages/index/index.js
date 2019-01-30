@@ -27,7 +27,7 @@ Page({
       sraech_val:e.detail.value
     },function(){
       wx.request({
-        url: 'https://api.zhangcc.top/xiaoshuo/book/auto-complete?query=' + that.data.sraech_val,
+        url: app.globalData.url+'xiaoshuo/book/auto-complete?query=' + that.data.sraech_val,
         method: 'GET',
         dataType: 'json',
         responseType: 'text',
@@ -40,7 +40,7 @@ Page({
         fail: function (res) {
           
         },
-        complete: function (res) { },
+        complete: function (res) {},
       })
     })
   },
@@ -73,7 +73,7 @@ Page({
   onLoad: function () {
     var that = this
     wx:wx.request({
-      url: 'https://api.zhangcc.top/xiaoshuo/cats/lv2/statistics',
+      url: app.globalData.url+'xiaoshuo/cats/lv2/statistics',
       data: '',
       header: {},
       method: 'GET',
@@ -86,7 +86,7 @@ Page({
           TypeList: list1,
         });
         wx.request({
-          url: 'https://api.zhangcc.top/xiaoshuo/cats/lv2',
+          url: app.globalData.url+'xiaoshuo/cats/lv2',
           header: {},
           method: 'GET',
           dataType: 'json',

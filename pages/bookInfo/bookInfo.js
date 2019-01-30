@@ -66,7 +66,7 @@ Page({
     var that = this;
     //获取书籍详情
     wx:wx.request({
-      url: 'https://api.zhangcc.top/xiaoshuo/book/details?id=' + that.data.book_id,
+      url: app.globalData.url+'xiaoshuo/book/details?id=' + that.data.book_id,
       data:{
       },
       header: {},
@@ -93,7 +93,7 @@ Page({
     });
     //获取书评（短评）
     wx: wx.request({
-      url: 'https://api.zhangcc.top/xiaoshuo/post/by-book',
+      url: app.globalData.url+'xiaoshuo/post/by-book',
       data: {
         book:that.data.book_id,
         sort: "updated",

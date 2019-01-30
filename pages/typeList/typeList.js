@@ -104,7 +104,7 @@ Page({
       hidden_loading:false,
     })
     wx: wx.request({
-      url: 'https://api.zhangcc.top/xiaoshuo/book/by-categories',
+      url: app.globalData.url+'xiaoshuo/book/by-categories',
       data: {
         // gender: options.type,
         gender: that.data.gender,
@@ -145,7 +145,7 @@ Page({
       hidden_loading: false,
     })
     wx:wx.request({
-      url: 'https://api.zhangcc.top/xiaoshuo/book/fuzzy-search',
+      url: app.globalData.url+'xiaoshuo/book/fuzzy-search',
       data: {
         query: that.data.sraech_val
       },
@@ -180,7 +180,7 @@ Page({
       hidden_loading: false,
     })
     wx:wx.request({
-      url: 'https://api.zhangcc.top/xiaoshuo/author-books',
+      url: app.globalData.url+'xiaoshuo/author-books',
       data: {
         author: that.data.author
       },

@@ -123,14 +123,22 @@ Page({
         that.setData({
           hidden_loading: true,
         })
-        var list1 = that.data.typeBookList;
-        for (var i = 0; i < res.data.books.length;i++){
-          list1.push(res.data.books[i])          
+        if(res.data.books.length==0){
+          wx.showToast({
+            title: '没有更多数据了',
+            icon: 'none',
+            duration: 1000
+          })
+        }else{
+          var list1 = that.data.typeBookList;
+          for (var i = 0; i < res.data.books.length; i++) {
+            list1.push(res.data.books[i])
+          }
+          // console.log(list1)
+          that.setData({
+            typeBookList: list1
+          });
         }
-        // console.log(list1)
-        that.setData({
-          typeBookList: list1
-        });
       },
       fail: function (res) { 
         that.network_error()

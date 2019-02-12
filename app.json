@@ -1,16 +1,36 @@
 {
   "pages": [
+    "pages/ranking/ranking",
     "pages/index/index",
     "pages/bookInfo/bookInfo",
     "pages/typeList/typeList",
     "pages/catalog/catalog",
     "pages/bookContent/bookContent",
-    "pages/comment/comment"
+    "pages/comment/comment",
+    "pages/ranking",
+    "components/typeItem/typeItem"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "小说神器",
     "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "selectedColor": "#1AAD16",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "分类",
+        "iconPath": "./img/type.png"
+      },
+      {
+        "pagePath": "pages/ranking/ranking",
+        "text": "排行榜",
+        "iconPath": "./img/ranking.png"
+      }
+    ]
   }
 }

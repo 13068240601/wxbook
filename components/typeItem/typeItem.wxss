@@ -1,0 +1,47 @@
+.content{
+    width: 100%;
+    height: 100%;
+    padding: 0 10px;
+    box-sizing: border-box;
+}
+.icon{
+    width: 30px;
+    height: 30px;
+    margin: 0 10px;
+}
+.text{
+    width: calc(100% - 50px);
+    height: 100%;
+    border-bottom: 1px solid #cccccc;
+    box-sizing: border-box;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+}
+.rank_item_collapse:last-child>.text{
+    border: none;
+}
+.rank_item,.collapse_title,.rank_item_collapse{
+    height: 40px;
+    display: flex;
+    align-items: center;
+}
+.rank_item_collapse{
+    padding-left: 50px;
+    box-sizing: border-box;
+}
+.rank_item_collapse .text{
+    width: 100%;
+}
+.collapse_title{
+    display: flex;
+}
+.collapse_title .text{
+    display: flex;
+    justify-content: space-between;
+}
+.collapse_title .text image{
+    width: 20px;
+    height: 15px;
+    margin-right: 10px 
+}

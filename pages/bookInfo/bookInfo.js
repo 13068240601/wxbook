@@ -125,7 +125,7 @@ Page({
     })
     //获取书籍推荐
     wx: wx.request({
-      url: 'https://novel.juhe.im/recommend/' + that.data.book_id,
+      url: app.globalData.url+'xiaoshuo/recommend?id=' + that.data.book_id,
       data: {
       },
       header: {},

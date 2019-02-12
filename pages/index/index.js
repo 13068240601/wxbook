@@ -115,5 +115,12 @@ Page({
       },
       complete: function(res) {},
     })
+  },
+  onShow:function(){
+    wx.setTabBarItem({
+      index: 0,
+      iconPath: './img/type.png',
+      selectedIconPath: './img/type_active.png'
+    })
   }
 })

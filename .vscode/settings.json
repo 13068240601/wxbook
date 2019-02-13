@@ -4,6 +4,6 @@
         "*.wxss": "css",
         "*.wxs": "javascript",
         "*.tpl": "html",
-        "*.wxml": "html"
+        "*.wxml": "wxml"
     }
 }

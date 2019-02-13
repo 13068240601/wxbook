@@ -18,17 +18,13 @@
     display: flex;
     align-items: center;
 }
-.rank_item_collapse:last-child>.text{
-    border: none;
-}
 .rank_item,.collapse_title,.rank_item_collapse{
     height: 40px;
     display: flex;
     align-items: center;
 }
-.rank_item_collapse{
-    padding-left: 50px;
-    box-sizing: border-box;
+.collapse{
+    justify-content: flex-end;
 }
 .rank_item_collapse .text{
     width: 100%;

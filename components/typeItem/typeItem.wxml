@@ -1,8 +1,8 @@
 <block>
-    <view class="rank_item" wx:for='{{list.male}}' wx:key='index' wx:if='{{item.collapse==false}}' hover-class="none" hover-stop-propagation="false">
-        <image class="icon" src='http://statics.zhuishushenqi.com{{item.cover}}'></image>
+    <view class="rank_item {{itemData.collapse==true?'collapse':''}}" data-id='{{itemData._id}}' data-title='{{itemData.title}}' bindtap='jump'>
+        <image class="icon" src='http://statics.zhuishushenqi.com{{itemData.cover}}' wx:if="{{!itemData.collapse}}"></image>
         <view class="text">
-            {{item.title}}
+            {{itemData.title}}
         </view>
     </view>
 </block>

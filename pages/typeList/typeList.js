@@ -238,6 +238,36 @@ Page({
       },function(){
         that.getAuthor()
       })
+    }
+    else if(options.ranking_title){
+      wx.setNavigationBarTitle({
+        title: options.ranking_title,
+      })
+      that.setData({
+        hidden_loading: false,
+      })
+      wx.request({
+        url: app.globalData.url + 'xiaoshuo/ranking/details?id=' + options.ranking_id,
+        method: 'GET',
+        success: function(res){
+          that.setData({
+            typeBookList:res.data.ranking.books
+          })
+        },
+        fail: function() {
+          wx.showToast({
+            title: '网络错误',
+            icon: 'none',
+            duration: 1000
+          })
+        },
+        complete: function() {
+          that.setData({
+            hidden_loading: true,
+          })
+          // complete
+        }
+      })
     }else{
       // console.log(options.type, options.typeName)
       // console.log(JSON.parse(options.mins))

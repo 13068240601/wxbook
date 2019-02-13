@@ -18,13 +18,13 @@
     display: flex;
     align-items: center;
 }
-.rank_item_collapse:last-child>.text{
-    border: none;
-}
 .rank_item,.collapse_title,.rank_item_collapse{
     height: 40px;
     display: flex;
     align-items: center;
+}
+.male_collapse{
+    overflow: hidden;
 }
 .rank_item_collapse{
     padding-left: 50px;
@@ -35,6 +35,10 @@
 }
 .collapse_title{
     display: flex;
+}
+.title{
+    height: 40px;
+    line-height: 40px;
 }
 .collapse_title .text{
     display: flex;

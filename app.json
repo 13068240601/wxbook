@@ -7,7 +7,6 @@
     "pages/catalog/catalog",
     "pages/bookContent/bookContent",
     "pages/comment/comment",
-    "pages/ranking",
     "components/typeItem/typeItem"
   ],
   "window": {

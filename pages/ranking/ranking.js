@@ -5,7 +5,10 @@ Page({
    * 页面的初始数据
    */
   data: {
-    list:''
+    list:'',
+    male_collapse:true,
+    female_collapse:true,
+    epub_collapse:true
   },
 
   /**
@@ -32,7 +35,21 @@ Page({
       }
     })
   },
-
+  male_collapse:function(){
+    this.setData({
+      male_collapse: !this.data.male_collapse
+    })
+  },
+  female_collapse:function(){
+    this.setData({
+      female_collapse: !this.data.female_collapse
+    })
+  },
+  epub_collapse: function(){
+    this.setData({
+      epub_collapse: !this.data.epub_collapse
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

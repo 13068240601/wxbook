@@ -31,8 +31,8 @@
         </view>
       </view>    
     </view>
-    <loading hidden="{{hidden_loading}}">
-      {{loading}}
-    </loading>
   </scroll-view>
+  <loading hidden="{{hidden_loading}}">
+    {{loading}}
+  </loading>
 </view>

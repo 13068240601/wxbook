@@ -97,7 +97,6 @@ Page({
       paragraph:[]
     },function(){
       that.getchapters(that.data.chapters[i].link)
-      // console.log(that.data.chapters[i].link)
       that.setData({
         isShowchapters: false,
         isShowNav: false,
@@ -113,8 +112,7 @@ Page({
     var that = this
     for (var i = 0; i < res.length; i++) {
       list.push(res[i])
-    } 
-    // console.log(list)       
+    }     
     this.setData({
       chapters: list,
     },function(){
@@ -143,10 +141,6 @@ Page({
         dataType: 'json',
         responseType: 'text',
         success: res => resolve(res),
-        // success: function (res) {
-        //   console.log(res)
-        
-        // },
         fail: function (res) { },
         complete: function (res) { },
       })
@@ -168,17 +162,12 @@ Page({
       dataType: 'json',
       responseType: 'text',
       success: function (res) {
-        // console.log(res)
         if (res.statusCode = 200){
           that.setData({
-            // scroll_top: 0,
             isRequest:true
           })
-          // var chapterlist = [];
-          // chapterlist.push(res.data.chapter.title);
           var paragraphlist = that.data.paragraph;
           var str = res.data.chapter.body.split(/[\n,]/g)
-          // console.log(str)
           var strs = [];
           for (var i = 0; i < str.length; i++) {
             str[i] = str[i].replace(/(^\s*)|(\s*$)/g, "");//除去开头空格
@@ -186,10 +175,7 @@ Page({
             strs.push(str[i])
           }
           paragraphlist.push(strs)
-          // console.log(chapterlist)
-          // console.log(paragraphlist)
           that.setData({
-            // chapter: chapterlist,
             paragraph: paragraphlist,
             hidden_loading: true,
           });
@@ -230,15 +216,12 @@ Page({
       chaptersNumber: i,
       chaptersTitle: Title
     }, function () {
-      // console.log(that.data.chaptersTitle)
     })
   },
   //下一章
   next_chapter(){
-    // console.log("到底了")
     var that = this
     var i = this.data.chaptersNumber;
-    // console.log(i,that.data.chapters.length-1)
     if (this.data.isRequest == true ){
       if (that.data.asce == true && (i < that.data.chapters.length - 1)){
         i++
@@ -275,13 +258,11 @@ Page({
     })
   },
   onLoad: function (options) {
-    // console.log(options)
     var that = this
     //设置内容类型 txt、img    
     this.setData({
       contentType: options.contentType,
       book_id:options.book,
-      // chaptersTitle:Title
     })
     if (options.catalog == 'true' || options.catalog == true){
       this.setData({
@@ -291,7 +272,6 @@ Page({
         that.getList().then((res) => {
           if (res.statusCode == 200){
             that.getcatalog(that.data.book_id).then((catalog)=>{
-              // console.log(catalog.data.mixToc.chapters)
               if (catalog.data.ok == true || catalog.data.ok == 'true'){
                 that.getcataloglist(catalog.data.mixToc.chapters)
                 that.getchapters(that.data.chapters[that.data.chaptersNumber].link)
@@ -309,7 +289,6 @@ Page({
       that.getList().then((res) => {
         if (res.statusCode == 200) {
           that.getcatalog(that.data.book_id).then((catalog) => {
-            // console.log(catalog.data.mixToc.chapters)
             if (catalog.data.ok == true || catalog.data.ok == 'true') {
               that.getcataloglist(catalog.data.mixToc.chapters)
               that.getchapters(that.data.chapters[that.data.chaptersNumber].link)

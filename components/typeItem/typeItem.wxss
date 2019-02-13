@@ -18,26 +18,11 @@
     display: flex;
     align-items: center;
 }
-.rank_item,.collapse_title,.rank_item_collapse{
+.rank_item{
     height: 40px;
     display: flex;
     align-items: center;
 }
 .collapse{
     justify-content: flex-end;
-}
-.rank_item_collapse .text{
-    width: 100%;
-}
-.collapse_title{
-    display: flex;
-}
-.collapse_title .text{
-    display: flex;
-    justify-content: space-between;
-}
-.collapse_title .text image{
-    width: 20px;
-    height: 15px;
-    margin-right: 10px 
 }

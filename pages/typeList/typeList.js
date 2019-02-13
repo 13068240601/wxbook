@@ -1,4 +1,3 @@
-2//index.js
 //获取应用实例
 const app = getApp()
 
@@ -50,7 +49,6 @@ Page({
   jumpInfo:function(e){
     var book_id = e.currentTarget.dataset.book_id;
     var contentType = e.currentTarget.dataset.content_type;
-    // console.log(contentType)
     wx.navigateTo({
       url: '../bookInfo/bookInfo?book_id=' + book_id + '&contentType=' + contentType
     })
@@ -106,10 +104,8 @@ Page({
     wx: wx.request({
       url: app.globalData.url+'xiaoshuo/book/by-categories',
       data: {
-        // gender: options.type,
         gender: that.data.gender,
         type: that.data.type,
-        // major: options.typeName,
         major: that.data.major,
         minor: that.data.minor,
         start: that.data.start,
@@ -134,7 +130,6 @@ Page({
           for (var i = 0; i < res.data.books.length; i++) {
             list1.push(res.data.books[i])
           }
-          // console.log(list1)
           that.setData({
             typeBookList: list1
           });
@@ -169,11 +164,9 @@ Page({
         for (var i = 0; i < res.data.books.length; i++) {
           list1.push(res.data.books[i])
         }
-        // console.log(list1)
         that.setData({
           typeBookList: list1
         });
-        // console.log(res.data)
       },
       fail: function(res) {
         this.network_error()
@@ -197,13 +190,11 @@ Page({
       dataType: 'json',
       responseType: 'text',
       success: function(res) {
-        // console.log(res)
         if (res.statusCode==200){
           var list1 = that.data.typeBookList;
           for (var i = 0; i < res.data.books.length; i++) {
             list1.push(res.data.books[i])
           }
-          // console.log(list1)
           that.setData({
             typeBookList: list1
           });
@@ -265,19 +256,14 @@ Page({
           that.setData({
             hidden_loading: true,
           })
-          // complete
         }
       })
     }else{
-      // console.log(options.type, options.typeName)
-      // console.log(JSON.parse(options.mins))
-      // console.log(options.mins)
       var mins = JSON.parse(options.mins)
       if (mins.major == options.typeName){
         this.setData({
           mins: mins.mins
         },function(){
-          // console.log(that.data.mins)
         })
       }
       wx.setNavigationBarTitle({
@@ -292,7 +278,6 @@ Page({
   },
   lower: function (e) {
     if(this.data.gender){
-      // console.log("到底了")
       var that = this
       var s = this.data.start
       s++

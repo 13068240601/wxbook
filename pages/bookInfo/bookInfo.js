@@ -1,4 +1,3 @@
-2//index.js
 //获取应用实例
 const app = getApp()
 
@@ -52,13 +51,11 @@ Page({
   jumpInfo: function (e) {
     var book_id = e.currentTarget.dataset.book_id;
     var contentType = e.currentTarget.dataset.content_type;
-    // console.log(contentType)
     wx.navigateTo({
       url: '../bookInfo/bookInfo?book_id=' + book_id + '&contentType=' + contentType
     })
   },
-  onLoad: function (options) {
-    // console.log(options)    
+  onLoad: function (options) {  
     this.setData({
       book_id: options.book_id,
       contentType: options.contentType
@@ -106,7 +103,6 @@ Page({
       dataType: 'json',
       responseType: 'text',
       success: function (res) {
-        // console.log(res.data)
         if ((res.data.ok == true || res.data.ok == 'true') && res.data.posts){
           var time = []
           
@@ -133,7 +129,6 @@ Page({
       dataType: 'json',
       responseType: 'text',
       success: function (res) {
-        // console.log(res.data.books)
         that.setData({
           recommend:res.data.books
         })

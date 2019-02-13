@@ -1,4 +1,3 @@
-//index.js
 //获取应用实例
 const app = getApp()
 
@@ -31,7 +30,6 @@ Page({
         dataType: 'json',
         responseType: 'text',
         success: function (res) {
-          // console.log(res)
           that.setData({
             recommend: res.data.keywords
           })
@@ -80,7 +78,6 @@ Page({
       responseType: 'text',
       success: function(res) {
         var list1 = res.data
-        // console.log(list1)
         that.setData({
           TypeList: list1,
         });

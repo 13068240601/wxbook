@@ -49,8 +49,3 @@
     height: 15px;
     margin-right: 10px 
 }
-/* .collapse_title .collapse_title_icon{
-    width: 30px;
-    height: 30px;
-    background: url() no-repeat;
-} */

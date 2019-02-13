@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/ranking/ranking",
     "pages/index/index",
+    "pages/ranking/ranking",
     "pages/bookInfo/bookInfo",
     "pages/typeList/typeList",
     "pages/catalog/catalog",
